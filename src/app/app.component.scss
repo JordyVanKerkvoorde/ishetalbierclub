@@ -1,0 +1,21 @@
+.content{
+    font-size: 2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    .glass{
+        align-content: center;
+        text-align: center;
+        h1 {
+            font-size: 3rem;
+        }
+        img {
+            filter: invert(1) sepia(80%) saturate(10000%) hue-rotate(-3deg);
+          }
+    }
+    .motd {
+        text-align: center;
+    }
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MOTDs } from './data/motd.data';
+import { SVGs } from './data/svg.data';
+import { GlassTypes } from './domain/glasstypes.enum';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,17 @@ import { MOTDs } from './data/motd.data';
 })
 export class AppComponent implements OnInit {
   motd: string;
+  svgs = SVGs;
+  glassType: GlassTypes;
+  backgroundColors = {
+    full: "",
+    empty: "",
+    half: ""
+  }
 
   ngOnInit(): void {
     this.motd = this.getMOTD();
-    this.isTime()
+    this.glassType = this.getGlassType();
   }
 
   isDday(): boolean {
@@ -45,6 +54,13 @@ export class AppComponent implements OnInit {
     if(this.isDday()) return MOTDs.today[Math.floor(Math.random() * MOTDs.today.length)];
 
     return MOTDs.notNear[Math.floor(Math.random() * MOTDs.notNear.length)]; 
+  }
+
+  getGlassType(): GlassTypes {
+    if(this.isTime() && this.isDday()) return GlassTypes.FULL;
+    if(this.isDday() && !this.timeJustPassed()) return GlassTypes.HALF;
+
+    return GlassTypes.EMPTY;
   }
 
 }

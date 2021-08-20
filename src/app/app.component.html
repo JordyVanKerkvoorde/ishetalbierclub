@@ -1,3 +1,14 @@
-<div>
-  <h1>{{ this.motd }}</h1>
+<div class="content">
+  <div *ngIf="this.glassType === 'empty'" class="glass">
+    <img src="{{svgs.empty}}" alt="empty glass">
+    <h1>NEE</h1>
+  </div>
+  <div *ngIf="this.glassType === 'half'" class="glass">
+    <img src="{{svgs.half}}" alt="half full glass">
+    <h1>BIJNA</h1>
+  </div><div *ngIf="this.glassType === 'full'" class="glass">
+    <img src="{{svgs.full}}" alt="full glass">
+    <h1>JA</h1>
+  </div>
+  <h1 class="motd">{{ this.motd }}</h1>
 </div>

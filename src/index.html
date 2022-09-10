@@ -5,9 +5,50 @@
   <title>Ishetalbierclub</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/04.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 </head>
 <body>
+  <!-- root -->
   <app-root></app-root>
+  <!-- background -->
+  <span style="background: url('./assets/01.svg'); 
+      height: 4rem;
+      width: 4rem; 
+      position: absolute; 
+      left: 49%; 
+      top: 75%; 
+      transform: rotate(20deg)"></span>
+  <script>
+    const randomNumberOfItems = randomIntFromInterval(20, 30);
+
+    for(var i = 0; i <= 10; i++) {
+      const imageNr = randomIntFromInterval(1, 7);
+      const posTop = randomIntFromInterval(0, 100);
+      const posLeft = randomIntFromInterval(0, 100);
+      const size = randomIntFromInterval(2, 5);
+      const rotation = randomIntFromInterval(-30, 30)
+      var elem = document.createElement('span');
+      elem.setAttribute('style', 
+      `background: url('./assets/0${imageNr}.svg'); 
+      height: ${size}rem;
+      width: ${size}rem; 
+      position: absolute; 
+      left: ${posLeft}vw; 
+      top: ${posTop}vh; 
+      opacity: 0.3;
+      transform: rotate(${rotation}deg)`
+      )
+      console.log(document.getElementsByClassName('app-root')[0])
+      document.body.prepend(elem);
+    }
+
+    console.log(randomNumberOfItems);
+
+    function randomIntFromInterval(min, max) { // min and max included 
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+  </script>
+
 </body>
 </html>

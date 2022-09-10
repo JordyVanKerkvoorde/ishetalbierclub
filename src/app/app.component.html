@@ -1,5 +1,28 @@
 <div class="content">
-  <div *ngIf="this.glassType === 'empty'" class="glass">
+  <div class="timer" *ngIf="!isTime(); else elseBlock">
+    <!-- <div class="timer-component">{{this.totalMsToBC}}</div>
+    <div class="timer-component">{{this.maxMsToBC}}</div> -->
+    <div class="timer-component">
+      <div class="timer-component-title">Days</div>
+      <div class="timer-component-value">{{this.cdDaysToBC}}</div>
+    </div>
+    <div class="timer-component">
+      <div class="timer-component-title">Hours</div>
+      <div class="timer-component-value">{{this.cdHoursToBC}}</div>
+    </div>
+    <div class="timer-component">
+      <div class="timer-component-title">Minutes</div>
+      <div class="timer-component-value">{{this.cdMinutesToBC}}</div>
+    </div>
+    <div class="timer-component">
+      <div class="timer-component-title">Seconds</div>
+      <div class="timer-component-value">{{this.cdSecondsToBC}}</div>
+    </div>
+  </div>
+  <div class="motd">
+    <div>{{ this.motd }}</div></div> 
+
+  <!-- <div *ngIf="this.glassType === 'empty'" class="glass">
     <img src="{{svgs.empty}}" alt="empty glass">
     <h1>NEE</h1>
   </div>
@@ -9,6 +32,10 @@
   </div><div *ngIf="this.glassType === 'full'" class="glass">
     <img src="{{svgs.full}}" alt="full glass">
     <h1>JA</h1>
-  </div>
-  <h1 class="motd">{{ this.motd }}</h1>
+  </div>-->
+  <ng-template #elseBlock>
+    <div class="beerclubtime">
+      <img src="assets/beergifs/{{beerGifNr}}.gif" alt="gif" style="width: 20rem;">
+    </div>
+  </ng-template>
 </div>
